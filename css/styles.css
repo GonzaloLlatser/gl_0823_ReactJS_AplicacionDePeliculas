@@ -1,48 +1,52 @@
-/* Estilos Generales */
+/*ESTILOS GENERALES*/
 
-body {
-    background-color: #d1defa;
+body{
+    background: #d1defa;
     font-family: sans-serif, Arial, Helvetica;
+    text-align: center;
     padding: 0px;
     margin: 0px;
-    text-align: center;
 }
 
-.layout {
+.layout{
     width: 100%;
     height: auto;
+
     display: grid;
     grid-template-areas:
         "header header header header"
         "nav nav nav nav"
         "content content content lateral"
-        "footer footer footer footer";
+        "footer footer footer footer"
+    ;
     grid-template-rows: 100px 70px auto 70px;
 }
 
-/* Estilos cabecera */
+/*ESTILOS CABECERA*/
 
-.header {
+.header{
     grid-area: header;
-    background-color: white;
+    
+    background: white;
     text-align: left;
     font-style: italic;
+
     display: flex;
     justify-content: center;
 }
 
-.logo {
+.logo{
     background: linear-gradient(90deg, #03228f 10%, #0e73e4 100%);
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 300px;
     margin-top: 30px;
 }
 
-.play {
-    width: 0px;
-    height: 0px;
-    margin-top: 14px;
+.play{
+    width: 0;
+    height: 0;
+    margin-top: 15px;
     margin-left: 16px;
     border-left: 12px solid white;
     border-top: 6px solid transparent;
@@ -51,27 +55,28 @@ body {
 
 .header h1{
     margin-left: 15px;
-    margin-top: 32px;
+    margin-top: 30px;
 }
 
-/* Estilos de la barra de navegacion */
-.nav {
+/*ESTILOS DE LA BARRA DE NAVEGACIÓN*/
+
+.nav{
     grid-area: nav;
     background: linear-gradient(90deg, #03228f 10%, #0e73e4 100%);
 }
 
-.nav ul{
+.nav > ul {
     display: flex;
     justify-content: center;
     align-items: center;
-    list-style: none ;
+    list-style: none;
 }
 
 .nav li{
     padding: 10px;
 }
 
-.nav a{
+.nav a {
     display: block;
     margin-left: 30px;
     margin-right: 30px;
@@ -83,22 +88,25 @@ body {
 }
 
 .nav a:hover{
-    transform: scale(1.2,1.2);
+    transform: scale(1.1, 1.1);
 }
 
-/* Estilos del contenido principal */
+/*ESTILOS PARA EL CONTENIDO PRINCIPAL*/
 
-.content {
+.content{
     grid-area: content;
-    background-color: #f6f7f9;
+    background: #f6f7f9;
+
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: flex-start;
+    flex-grow: 1;
 }
 
 .peli-item{
-    background-color: white;
+    flex-grow: 1;
+    background: white;
     border-radius: 10px;
     box-shadow: 0px 0px 6px #ddd;
     margin: 20px;
@@ -116,9 +124,9 @@ input[type="button"]{
     color: white;
     border: 0;
     outline: 0;
-    padding: 15px;
+    padding:15px;
     border-radius: 3px;
-    margin-top: 15px;
+    margin-top:15px;
     text-transform: capitalize;
     font-size: 16px;
     font-weight: 500;
@@ -127,52 +135,83 @@ input[type="button"]{
 }
 
 .peli-item .edit:hover{
-    background-color: #e77b00;
+    background: #e77b00;
 }
 
 .peli-item .delete:hover{
-    background-color: #9b0202;
+    background: #9b0202;
 }
 
-/* Estilos barra lateral */
+/*ESTILOS BARRA LATERAL*/
 
-.lateral {
+.lateral{
     grid-area: lateral;
-    background-color: #f6f7f9;
+    background: #f6f7f9;
     border-left: 1px solid #ddd;
     padding: 20px;
 }
 
-.lateral div{
+.lateral > div{
     box-sizing: border-box;
     width: 90%;
     margin: 20px;
     padding: 20px;
     padding-top: 10px;
-    background-color: white;
+    background: white;
     border-radius: 10px;
     box-shadow: 0px 0px 6px #ddd;
 }
 
 .lateral input[type="text"],
 .lateral input[type="text"],
-.lateral textarea{
+.lateral textarea,
+.edit_form input[type="text"],
+.edit_form input[type="text"],
+.edit_form textarea
+{
     display: block;
     margin: 0 auto;
     margin-top: 15px;
     padding: 12px;
     border-radius: 5px;
-    background-color: #f6f7f9;
+    background: #f6f7f9;
     color: #454545;
     width: 80%;
     opacity: 4;
     outline: 0;
     border-color: transparent;
-
 }
 
-.footer {
+.edit_form{
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+}
+
+/*ESTILOS PARA EL PIE DE PÁGINA*/
+.footer{
     grid-area: footer;
-    border: 5px solid black;
-    background-color: lightpink;
+
+    background: #d1defa;
+    color: #454545;
+    border-top: 1px solid white;
+    text-align: left;
+    line-height: 68px;
+    padding-left: 25px;
+}
+
+.footer a{
+    color: #0b468a;
+    text-decoration: none;
+}
+
+@media (max-width: 1085px){
+    .content {
+        flex-flow: column wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .peli-item{
+        width: 80%;
+    }
 }
