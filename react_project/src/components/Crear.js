@@ -1,25 +1,40 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 export const Crear = () => {
 
-    const titulo = "Añadir pelicula";
+    const tituloComponente = "Añadir pelicula";
+
+    const [peliState, setPeliState] = useState({
+        titulo: " ",
+        descripcion: " "
+    });
+
+    const { titulo, descripcion } = peliState;
 
     const conseguirDatosForm = e => {
         e.preventDefault();
-        alert("Formulario enviado")
 
+        //Conseguir datos del formulario
+        let target = e.target;
+        let titulo = target.titulo.value;
+        let descripcion = target.descripcion.value;
+
+        //Crear objeto de la pelicula a guadar
+        let peli = {
+            id: new Date().getTime(),
+            titulo,
+            descripcion
+        };
+
+        setPeliState(peli);
     }
-
-
-
-
-
-
-
-
+    
     return (
         <div className="add">
-            <h3 className="title">{titulo}</h3>
+            <h3 className="title">{tituloComponente}</h3>
+            <strong>
+                {(titulo && descripcion) && "Has creado la pelicula: " + titulo}
+            </strong>
 
             <form onSubmit={conseguirDatosForm}>
                 <input type="text"
@@ -37,7 +52,6 @@ export const Crear = () => {
                     id="save"
                     value="Guardar" />
             </form>
-
         </div>
     )
 }
