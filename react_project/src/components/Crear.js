@@ -15,32 +15,30 @@ export const Crear = ({ setListadoState }) => {
     const conseguirDatosForm = e => {
         e.preventDefault();
 
-        //Conseguir datos del formulario
+        // Conseguir datos del formulario
         let target = e.target;
         let titulo = target.titulo.value;
         let descripcion = target.descripcion.value;
 
-        //Crear objeto de la pelicula a guadar
+        // Crear objeto de la pelicula a guadar
         let peli = {
             id: new Date().getTime(),
             titulo,
             descripcion
         };
 
-        //Guardar estado
+        // Guardar estado
         setPeliState(peli);
 
-        //Actualizar el estado del listado principal
+        // Actualizar el estado del listado principal
         setListadoState(elementos => {
             return [...elementos, peli];
         });
 
 
-        //Guardar estado en el almacenamiento local(SS)
+        // Guardar estado en el almacenamiento local(SS)
         GuardarEnStorage("pelis", peli);
     }
-
-
 
     return (
         <div className="add">

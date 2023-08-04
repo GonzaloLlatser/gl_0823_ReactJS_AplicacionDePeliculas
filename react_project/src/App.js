@@ -6,8 +6,6 @@ import { useState } from "react";
 function App() {
     const [listadoState, setListadoState] = useState([]);
 
-
-
     return (
         <div className="layout">
             {/* Cabecera del sitio */}

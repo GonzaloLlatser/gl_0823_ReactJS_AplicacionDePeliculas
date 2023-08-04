@@ -20,7 +20,6 @@ export const Buscador = ({ listadoState, setListadoState }) => {
             pelis_encontradas = JSON.parse(localStorage.getItem("pelis"));
         }
 
-
         // Actualizar el estado del listado principal con lo filtrado
         setListadoState(pelis_encontradas);
     }

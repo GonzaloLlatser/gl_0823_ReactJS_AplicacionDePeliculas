@@ -3,9 +3,8 @@ import { Editar } from './Editar';
 
 export const Listado = ({ listadoState, setListadoState }) => {
 
-  //const [listadoState, setListadoState] = useState([]);
 
-  //comportamiento de la funcion editar(OnClick Boton)
+  //Comportamiento de la funcion editar(OnClick Boton)
 
   const [editar, setEditar] = useState(0);
 
@@ -29,20 +28,20 @@ export const Listado = ({ listadoState, setListadoState }) => {
     return peliculas;
   }
 
-  //funcion para borrar pelicula
+  // Funcion para borrar pelicula
 
   const borrarPeli = (id) => {
 
-    //conseguir peliculas almacenadas
+    // Conseguir peliculas almacenadas
     let pelis_almacenadas = conseguirPeliculas();
 
-    //filtrar esas peliculas para que elimine del array la que no quiero
+    // Filtrar esas peliculas para que elimine del array la que no quiero
     let nuevo_array_pelis = pelis_almacenadas.filter(peli => peli.id !== parseInt(id));
 
-    //actualizar estado del listado
+    // Actualizar estado del listado
     setListadoState(nuevo_array_pelis);
 
-    //actualizar los datos en el localStorage
+    // Actualizar los datos en el localStorage
     localStorage.setItem("pelis", JSON.stringify(nuevo_array_pelis));
   }
 
@@ -66,7 +65,6 @@ export const Listado = ({ listadoState, setListadoState }) => {
                 setEditar={setEditar}
                 setListadoState={setListadoState}
               />
-
 
             )}
           </article>
