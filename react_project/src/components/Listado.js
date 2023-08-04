@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react'
+import { Editar } from './Editar';
 
 export const Listado = ({ listadoState, setListadoState }) => {
 
   //const [listadoState, setListadoState] = useState([]);
+
+  //comportamiento de la funcion editar(OnClick Boton)
+
+  const [editar, setEditar] = useState(0);
 
 
 
@@ -28,17 +33,17 @@ export const Listado = ({ listadoState, setListadoState }) => {
 
   const borrarPeli = (id) => {
 
-   //conseguir peliculas almacenadas
-   let pelis_almacenadas = conseguirPeliculas();
+    //conseguir peliculas almacenadas
+    let pelis_almacenadas = conseguirPeliculas();
 
-   //filtrar esas peliculas para que elimine del array la que no quiero
-   let nuevo_array_pelis = pelis_almacenadas.filter(peli => peli.id !== parseInt(id));
+    //filtrar esas peliculas para que elimine del array la que no quiero
+    let nuevo_array_pelis = pelis_almacenadas.filter(peli => peli.id !== parseInt(id));
 
-   //actualizar estado del listado
-   setListadoState(nuevo_array_pelis);
+    //actualizar estado del listado
+    setListadoState(nuevo_array_pelis);
 
-   //actualizar los datos en el localStorage
-   localStorage.setItem("pelis", JSON.stringify(nuevo_array_pelis));
+    //actualizar los datos en el localStorage
+    localStorage.setItem("pelis", JSON.stringify(nuevo_array_pelis));
 
   }
 
@@ -49,8 +54,12 @@ export const Listado = ({ listadoState, setListadoState }) => {
           <article key={peli.id} className="peli-item">
             <h3 className="title">{peli.titulo}</h3>
             <p className="description">{peli.descripcion}</p>
-            <button className="edit">Editar</button>
+            <button className="edit" onClick={() => { setEditar(peli.id) }}>Editar</button>
             <button className="delete" onClick={() => borrarPeli(peli.id)}>Borrar</button>
+            {/* Aparece formulario de Editar */}
+            {editar === peli.id && (
+              <Editar />
+            )}
           </article>
         );
       })
