@@ -31,12 +31,12 @@ function App() {
             {/* Contenido principal */}
             <section className="content">
                 {/* Aqui va el listado de peliculas */}
-                <Listado listadoState={listadoState} setListadoState={setListadoState}/>
+                <Listado listadoState={listadoState} setListadoState={setListadoState} />
             </section>
 
             {/* Barra lateral */}
             <aside className="lateral">
-                <Buscador />
+                <Buscador listadoState={listadoState} setListadoState={setListadoState} />
 
                 <Crear setListadoState={setListadoState} />
             </aside>
